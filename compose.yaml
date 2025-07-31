@@ -1,0 +1,19 @@
+services:
+  trino:
+    image: trinodb/trino:latest
+    container_name: trino
+    ports:
+      - "8080:8080"
+
+  dlt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dlt-trino-test
+    container_name: dlt
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: ["sh", "-c", "sleep 15 && uv run dlt_pipeline.py"]
+    depends_on:
+      - trino

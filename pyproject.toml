@@ -1,0 +1,13 @@
+[project]
+name = "dlt-destination-test"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dlt[sqlalchemy]",
+    "trino[sqlalchemy]",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.org/simple/"
